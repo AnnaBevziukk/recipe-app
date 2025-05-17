@@ -1,0 +1,6 @@
+{
+  "recipes": [
+    { "id": 1, "name": "Pasta", "description": "Delicious pasta recipe" },
+    { "id": 2, "name": "Pizza", "description": "Homemade pizza" }
+  ]
+}
