@@ -20,5 +20,5 @@ RUN npm run build
 # Відкриваємо порт, який використовує додаток
 EXPOSE 3000
 
-# CMD ["npm", "run", "start:dev"]
-CMD ["node", "dist/main.js"]
+# CMD ["node", "dist/main.js"]
+CMD ["npm", "run", "start:dev"]

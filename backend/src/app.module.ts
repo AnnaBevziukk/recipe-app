@@ -4,6 +4,7 @@ import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { RecipeModule } from './recipe/recipe.module';
 import * as Joi from 'joi';
 
 @Module({
@@ -35,6 +36,7 @@ import * as Joi from 'joi';
     }),
     UsersModule,
     AuthModule,
+    RecipeModule,
   ],
 })
 export class AppModule {}
