@@ -1,16 +1,18 @@
 import React from 'react';
-import './RecipeCard.css'; // Стилі додамо окремо
+import s from './RecipeCard.module.scss';
+import recipeImg from '../images/recipeIMG.jpg';
 
 function RecipeCard({ recipe }) {
   return (
-    <div className="card">
-      <img src={recipe.image} alt={recipe.title} className="card__image" />
-      <div className="card__content">
-        <h3 className="card__title">{recipe.title}</h3>
-        <p className="card__description">{recipe.description}</p>
-        <div className="card__meta">
-          <span>By {recipe.author}</span>
-          <span>{recipe.date}</span>
+    <div className={s.card}>
+      <img src={recipe.image || recipeImg} alt={recipe.title} className={s.card__img} />
+      <div className={s.card__content}>
+        <h3 className={s.card__title}>{recipe.title}</h3>
+        <p className={s.card__ingredients}>{recipe.ingredients || 'No ingredients'}</p>
+        <div className={s.card__meta}>
+          <span className={s.card__metaTime}>{recipe.time || 'N/A'} m</span>
+          <span className={s.card__metaAuthor}>By {recipe.author || 'Unknown'}</span>
+          <span className={s.card__metaDate}>{recipe.date || 'N/A'}</span>
         </div>
       </div>
     </div>
