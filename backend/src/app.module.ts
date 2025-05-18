@@ -10,7 +10,7 @@ import * as Joi from 'joi';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: 'config.env', // або '.env' — залежить від твого файлу
+      // envFilePath: 'config.env', // або '.env' — залежить від твого файлу
       validationSchema: Joi.object({
         DB_HOST: Joi.string().required(),
         DB_PORT: Joi.number().required(),
