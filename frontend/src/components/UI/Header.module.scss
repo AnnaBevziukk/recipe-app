@@ -1,0 +1,61 @@
+@use './../../styles/_mixins.scss' as mix;
+
+.header {
+  width: 100%;
+  background-color: var(--header-bg-color);
+  border-radius: 0 0 20px 20px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__logo {
+    font-weight: 600;
+    font-size: 30px;
+  }
+
+  &__highlight {
+    color: var(--text-accent-color);
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    @media (max-width: 768px) {
+        flex-direction: row-reverse;
+      }
+
+  }
+
+  &__theme {
+    @include mix.button-style($bg: var(--border-color), $color: var(--text-secondary-color));
+
+    width: 3.5rem;
+    height: 2rem;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    padding: 3px;
+
+    &-slider {
+      width: 1.2em;
+      height: 1.2em;
+      border-radius: 50%;
+      background: var(--text-main-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s ease;
+      position: absolute;
+      left: 3px;
+    }
+
+    &-slider--dark {
+      transform: translateX(1.75rem);
+    }
+  }
+}

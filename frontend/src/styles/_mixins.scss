@@ -1,0 +1,20 @@
+@mixin button-style($bg: transparent, $color: var(--text-main-color), $hover-bg: var(--border-color), $hover-color: var(--text-accent-color)) {
+  border: 2px solid var(--border-color);
+  border-radius: 15px;
+  padding: 0.25em 1.5em;
+  font-size: 1em;
+  font-weight: 500;
+  background: $bg;
+  color: $color;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: $hover-bg;
+    color: $hover-color;
+    border-color: $hover-color;
+  }
+}
