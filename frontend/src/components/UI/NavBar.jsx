@@ -13,7 +13,6 @@ function NavBar() {
         <div className={s.nav}>
 
             <div className={`${s.nav__burger} ${isOpen ? s.active : ""}`} onClick={toggleMenu}>
-
                 <div className={s["nav__burger-line"]}></div>
                 <div className={s["nav__burger-line"]}></div>
                 <div className={s["nav__burger-line"]}></div>
@@ -23,18 +22,6 @@ function NavBar() {
 
                 <li className={s.nav__item}>
                     <Link to="/" onClick={() => setIsOpen(false)}>HOME</Link>
-                </li>
-                <li className={s.nav__item}>
-                    <Link to="/react" onClick={() => setIsOpen(false)}>REACT</Link>
-                </li>
-                <li className={s.nav__item}>
-                    <Link to="/js" onClick={() => setIsOpen(false)}>JS</Link>
-                </li>
-                <li className={s.nav__item}>
-                    <Link to="/css" onClick={() => setIsOpen(false)}>CSS</Link>
-                </li>
-                <li className={s.nav__item}>
-                    <Link to="/scss" onClick={() => setIsOpen(false)}>SCSS</Link>
                 </li>
             </ul>
         </div>

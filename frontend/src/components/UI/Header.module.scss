@@ -1,4 +1,4 @@
-@import './../../styles/_mixins.scss';
+@use './../../styles/_mixins.scss' as mix;
 
 .header {
   width: 100%;
@@ -32,7 +32,7 @@
   }
 
   &__theme {
-    @include button-style($bg: var(--border-color), $color: var(--text-secondary-color));
+    @include mix.button-style($bg: var(--border-color), $color: var(--text-secondary-color));
 
     width: 3.5rem;
     height: 2rem;
