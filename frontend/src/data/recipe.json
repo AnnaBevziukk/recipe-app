@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "title": "Classic Spaghetti Carbonara",
+    "description": "A creamy Italian pasta dish with eggs, cheese, pancetta, and pepper.",
+    "image": "https://via.placeholder.com/300x200?text=Spaghetti+Carbonara",
+    "author": "Chef Mario",
+    "date": "2025-05-01"
+  },
+  {
+    "id": 2,
+    "title": "Chicken Stir-Fry",
+    "description": "Quick and healthy stir-fry with chicken, vegetables, and soy sauce.",
+    "image": "https://via.placeholder.com/300x200?text=Chicken+Stir-Fry",
+    "author": "Chef Anna",
+    "date": "2025-05-02"
+  },
+  {
+    "id": 3,
+    "title": "Chocolate Lava Cake",
+    "description": "A rich dessert with a gooey chocolate center.",
+    "image": "https://via.placeholder.com/300x200?text=Chocolate+Lava+Cake",
+    "author": "Chef Luca",
+    "date": "2025-05-03"
+  },
+  {
+    "id": 4,
+    "title": "Vegetable Soup",
+    "description": "A hearty soup made with fresh seasonal vegetables.",
+    "image": "https://via.placeholder.com/300x200?text=Vegetable+Soup",
+    "author": "Chef Elena",
+    "date": "2025-05-04"
+  }
+]
