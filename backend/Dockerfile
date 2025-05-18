@@ -20,5 +20,5 @@ RUN npm run build
 # Відкриваємо порт, який використовує додаток
 EXPOSE 3000
 
-# Команда запуску застосунку у продакшн режимі
-CMD ["npm", "run", "start:prod"]
+# CMD ["npm", "run", "start:dev"]
+CMD ["node", "dist/main.js"]
