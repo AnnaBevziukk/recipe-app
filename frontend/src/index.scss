@@ -1,0 +1,87 @@
+@import './styles/_variables.scss';
+
+* {padding: 0;margin: 0;border: 0;}
+*, *:before, *:after {-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;}
+:focus, :active {outline: none;}
+a:focus, a:active {outline: none;}
+nav, footer, header, aside {display: block;}
+input::-ms-clear {display: none;}
+button {cursor: pointer;}
+button::-moz-focus-inner {padding: 0;border: 0;}
+a, a:visited {text-decoration: none;color: inherit;}
+a:hover {text-decoration: none;}
+ul li {list-style: none;}
+img {vertical-align: top;}
+
+
+:root {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  caret-color: transparent;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  // Світла тема
+  @each $name, $pair in $colors {
+    --#{$name}-color: #{nth($pair, 1)};
+  }
+}
+
+[data-theme="dark"] {
+  // Темна тема
+  @each $name, $pair in $colors {
+    --#{$name}-color: #{nth($pair, 2)};
+  }
+}
+
+
+//h1 {
+//  font-size: 2rem;
+//  line-height: 1.1;
+//  padding: 0 0 1rem 0;
+//}
+//h2{
+//  padding: 0 0 0.5rem 2rem;
+//}
+h1 {
+  font-size: 2rem;
+  line-height: 1.1;
+  padding: 0 0 1rem 0;
+}
+h2{
+  padding: 0 0 0.5rem 0;
+}
+h3{
+  padding: 3rem 0 0 0;
+  color: var(--text-accent-color)
+}
+
+body {
+  margin: 0;
+  background-color: var(--body-bg-color);
+  color: var(--text-primary-color);
+}
+
+
+
+//button {
+//  border-radius: 8px;
+//  border: 1px solid transparent;
+//  padding: 0.6em 1.2em;
+//  font-size: 1em;
+//  font-weight: 500;
+//  font-family: inherit;
+//  background-color: #1a1a1a;
+//  transition: border-color 0.25s;
+//}
+//button:hover {
+//  border: 1px solid $border-color;
+//}
+
+.block{
+  padding-bottom: 2rem;
+}
