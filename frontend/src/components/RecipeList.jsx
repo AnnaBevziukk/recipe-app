@@ -1,59 +1,41 @@
-// import React, { useState } from 'react';
-// import RecipeCard from './RecipeCard';
-// import recipes from '../data/recipe.json';
-// import s from './RecipeList.module.scss'
-//
-// function RecipeList() {
-//   const [currentPage, setCurrentPage] = useState(1);
-//   const recipesPerPage = 20;
-//   const totalPages = Math.ceil(recipes.length / recipesPerPage);
-//
-//   const handleNextPage = () => {
-//     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-//   };
-//
-//   const handlePrevPage = () => {
-//     if (currentPage > 1) setCurrentPage(currentPage - 1);
-//   };
-//
-//   const startIndex = (currentPage - 1) * recipesPerPage;
-//   const currentRecipes = recipes.slice(startIndex, startIndex + recipesPerPage);
-//
-//   return (
-//     <div className={s.recept}>
-//       <div className={s.recept__list}>
-//         {currentRecipes.map((recipe) => (
-//           <RecipeCard key={recipe.id} recipe={recipe} />
-//         ))}
-//       </div>
-//
-//       <div className={s.recept__pagination}>
-//         <button onClick={handlePrevPage} disabled={currentPage === 1}>
-//           Previous
-//         </button>
-//         <span>Page {currentPage} of {totalPages}</span>
-//         <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-//           Next
-//         </button>
-//       </div>
-//
-//     </div>
-//   );
-// }
-//
-// export default RecipeList;
 import React, { useState, useEffect } from 'react';
 import RecipeCard from './RecipeCard';
 import s from './RecipeList.module.scss';
-
+import recipes from '../data/recipe.json'; // Імпортуємо заглушку
+import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
 function RecipeList() {
-  const [recipes, setRecipes] = useState([]);
+  const [currentRecipes, setCurrentRecipes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const recipesPerPage = 20;
 
+  const recipesPerPage = 6;
+  const totalPages = Math.ceil(recipes.length / recipesPerPage);
+
+  // ВАРІАНТ 1: Використання заглушки (data/recipes.json)
+  useEffect(() => {
+    // Імітація завантаження
+    setLoading(true);
+    try {
+      // Сортуємо або фільтруємо, якщо потрібно (заглушка)
+      const sortedRecipes = [...recipes]; // Копія масиву для уникнення мутації
+      setCurrentRecipes(sortedRecipes.slice(0, recipesPerPage)); // Перша сторінка
+    } catch (err) {
+      setError('Помилка при обробці даних');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Оновлення рецептів при зміні сторінки
+    const startIndex = (currentPage - 1) * recipesPerPage;
+    const endIndex = startIndex + recipesPerPage;
+    setCurrentRecipes(recipes.slice(startIndex, endIndex));
+  }, [currentPage]);
+
+  // ВАРІАНТ 2: Використання API (закоментований)
+  /*
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
@@ -64,7 +46,7 @@ function RecipeList() {
         const data = await res.json();
 
         if (res.ok) {
-          setRecipes(data.data); // Адаптуй до структури відповіді бекенду
+          setCurrentRecipes(data.data); // Адаптуй до структури відповіді бекенду
           setTotalPages(Math.ceil(data.total / recipesPerPage)); // Адаптуй до поля total
         } else {
           setError('Помилка при завантаженні рецептів');
@@ -79,6 +61,7 @@ function RecipeList() {
 
     fetchRecipes();
   }, [currentPage]);
+  */
 
   const handleNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
@@ -90,23 +73,34 @@ function RecipeList() {
 
   return (
     <div className={s.recept}>
-      {loading && <div className={s.recept__loading}>Завантаження...</div>}
-      {error && <div className={s.recept__error}>{error}</div>}
-      {!loading && !error && recipes.length === 0 && <div className={s.recept__noData}>Рецептів не знайдено.</div>}
-      {!loading && !error && (
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p style={{ color: 'red' }}>Error: {error}</p>
+      ) : (
         <>
           <div className={s.recept__list}>
-            {recipes.map((recipe) => (
+            {currentRecipes.map((recipe) => (
               <RecipeCard key={recipe.id} recipe={recipe} />
             ))}
           </div>
           <div className={s.recept__pagination}>
-            <button onClick={handlePrevPage} disabled={currentPage === 1}>
-              Previous
+            <button
+              onClick={handlePrevPage}
+              disabled={currentPage === 1}
+              className={s.recept__paginationButton}
+            >
+              <FaChevronLeft />
             </button>
-            <span>Page {currentPage} of {totalPages}</span>
-            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
-              Next
+            <span className={s.recept__paginationInfo}>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className={s.recept__paginationButton}
+            >
+              <FaChevronRight />
             </button>
           </div>
         </>

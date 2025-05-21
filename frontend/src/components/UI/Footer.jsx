@@ -1,7 +1,8 @@
 import s from './Footer.module.scss';
 import Container from "./Container.jsx";
 
-import {FaGithub, FaLinkedin, FaTwitter, FaInstagram} from "react-icons/fa"; // Імпортуємо іконки
+import {FaGithub, FaLinkedin, FaInstagram} from "react-icons/fa"; // Імпортуємо іконки
+import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
     return (
@@ -18,7 +19,7 @@ const Footer = () => {
                             LinkedIn
                         </a>
                         <a href="#" target="_blank" rel="noopener noreferrer" className={s.footer__element}>
-                            <FaTwitter/>
+                            <FaXTwitter />
                             Twitter
                         </a>
                         <a href="#" target="_blank" rel="noopener noreferrer" className={s.footer__element}>

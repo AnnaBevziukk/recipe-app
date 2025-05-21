@@ -1,0 +1,23 @@
+.container{
+  min-height: 100%;
+  width: 100%;
+  padding: 0 400px;
+  @media (max-width: 1300px) {
+    padding: 0 200px;
+  }
+
+  @media (max-width: 992px) {
+    padding: 0 100px;
+  }
+
+  @media (max-width: 767px) {
+    padding: 0;
+  }
+  p{
+    text-align: center;
+    span{
+      color: var(--text-accent-color);
+      text-decoration: underline;
+    }
+  }
+}

@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import style from "./App.module.scss";
 
 import HomePage from "./pages/HomePage.jsx";
-import SignInPage from "./pages/SignInPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import SignUpPage from "./pages/SignUpPage.jsx";
 import NewRecipePage from "./pages/NewRecipePage.jsx";
 import ModerationPage from "./pages/ModerationPage.jsx";
+
+import RecipePage from "./components/RecipePage.jsx";
 
 import Container from "./components/UI/Container.jsx";
 import Header from "./components/UI/Header.jsx";
@@ -33,10 +35,11 @@ function App() {
           <Container>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/signin" element={<SignInPage />} />
+              <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignUpPage />} />
               <Route path="/recipes/new" element={<NewRecipePage />} />
               <Route path="/moderation" element={<ModerationPage />} />
+              <Route path="/recipes/:id" element={<RecipePage />} />
             </Routes>
           </Container>
         </div>

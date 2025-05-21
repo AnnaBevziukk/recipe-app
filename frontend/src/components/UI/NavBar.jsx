@@ -28,7 +28,7 @@ function NavBar({ isLoggedIn, role }) {
         {!isLoggedIn ? (
           <>
             <li className={s.nav__item}>
-              <Link to="/signin" onClick={() => setIsOpen(false)}>SIGN IN</Link>
+              <Link to="/login" onClick={() => setIsOpen(false)}>SIGN IN</Link>
             </li>
             <li className={s.nav__item}>
               <Link to="/signup" onClick={() => setIsOpen(false)}>SIGN UP</Link>

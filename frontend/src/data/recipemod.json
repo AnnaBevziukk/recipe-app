@@ -1,0 +1,4 @@
+[
+  { "id": 1, "title": "Борщ", "description": "Смачний борщ", "status": "pending" },
+  { "id": 2, "title": "Піца", "description": "Домашня піца", "status": "pending" }
+]
