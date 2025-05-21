@@ -1,33 +1,46 @@
-/* RecipeCard.module.scss */
 .card {
   display: flex;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 20px;
-  background-color: #fff;
+  background-color: var(--body-bg-color);
 
   &__img {
     max-height: 250px;
+    height: 100%;
     object-fit: cover;
-    @media (max-width: 767px){
-      max-height: 150px;
-    }
+    //@media (max-width: 1300px){
+    //  max-height: 150px;
+    //}
+    //@media (max-width: 992px){
+    //  max-height: 150px;
+    //}
+    //@media (max-width: 767px){
+    //  max-height: 220px;
+    //}
   }
 
   &__content {
-    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    width: 100%;
+    flex-grow: 1; // Розтягуємо вміст на всю висоту
+    min-height: 0;
   }
 
   &__title {
     font-size: 1.5rem;
-    margin-bottom: 10px;
     font-weight: bold;
+    margin: 40px 0 10px 0;
+    color: var(--text-accent-color);
   }
 
   &__ingredients {
     font-size: 0.9rem;
-    color: #666;
+    color: var(--text-secondary-color);
     margin-bottom: 10px;
   }
 
@@ -35,7 +48,8 @@
     display: flex;
     justify-content: space-between;
     font-size: 0.8rem;
-    color: #999;
+    color: var(--text-secondary-color);
+    margin-top: auto;
   }
 
   &__time,
@@ -45,6 +59,65 @@
   }
 
   &__time {
+    display: flex;
+    align-items: center;
     font-weight: bold;
+
+  }
+  &__icon {
+    margin-right: 5px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+  }
+
+  &__description {
+    font-size: 0.9rem;
+    color: var(--text-secondary-color);
+    margin-top: 10px;
+  }
+}
+
+.card__actions {
+  margin-top: 10px;
+
+  .card__description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    padding: 0 10px;
+  }
+
+  .card__buttons {
+    display: flex;
+    justify-content: flex-end; // Притискаємо кнопки до правого краю
+    gap: 10px;
+    padding: 0 10px 10px 10px;
+  }
+}
+
+.card__approveBtn,
+.card__rejectBtn {
+  padding: 8px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.card__approveBtn {
+  background-color: #28a745;
+  color: var(--body-bg);
+
+  &:hover {
+    background-color: #218838;
+  }
+}
+
+.card__rejectBtn {
+  background-color: #dc3545;
+  color: var(--body-bg);
+
+  &:hover {
+    background-color: #c82333;
   }
 }
