@@ -1,4 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Recipe } from '../recipe/recipe.entity'; // ← додай імпорт
+import { Rating } from '../rating/rating.entity';
+import { Comment } from '../comment/comment.entity';
 
 export enum UserRole {
   USER = 'user',
@@ -28,4 +31,14 @@ export class User {
     default: UserRole.USER,
   })
   role!: UserRole;
+
+  // 👇 Додаємо зворотний зв'язок на рецепти
+  @OneToMany(() => Recipe, (recipe) => recipe.author)
+  recipes!: Recipe[];
+
+  @OneToMany(() => Rating, (rating) => rating.user)
+  ratings!: Rating[];
+
+  @OneToMany(() => Comment, (comment) => comment.user)
+  comments!: Comment[];
 }

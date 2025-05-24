@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import RecipeCard from './RecipeCard';
-import s from './RecipeList.module.scss';
-import recipes from '../data/recipe.json'; // Імпортуємо заглушку
-import {FaChevronLeft, FaChevronRight} from 'react-icons/fa';
+import React, { useState, useEffect } from "react";
+import RecipeCard from "./RecipeCard";
+import s from "./RecipeList.module.scss";
+import recipes from "../data/recipe.json"; // Імпортуємо заглушку
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 function RecipeList() {
   const [currentRecipes, setCurrentRecipes] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -21,7 +21,7 @@ function RecipeList() {
       const sortedRecipes = [...recipes]; // Копія масиву для уникнення мутації
       setCurrentRecipes(sortedRecipes.slice(0, recipesPerPage)); // Перша сторінка
     } catch (err) {
-      setError('Помилка при обробці даних');
+      setError("Помилка при обробці даних");
     } finally {
       setLoading(false);
     }
@@ -76,7 +76,7 @@ function RecipeList() {
       {loading ? (
         <p>Loading...</p>
       ) : error ? (
-        <p style={{ color: 'red' }}>Error: {error}</p>
+        <p style={{ color: "red" }}>Error: {error}</p>
       ) : (
         <>
           <div className={s.recept__list}>

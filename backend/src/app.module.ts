@@ -4,7 +4,11 @@ import { User } from './users/user.entity';
 import { UsersModule } from './users/users.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthModule } from './auth/auth.module';
+import { RecipeModule } from './recipe/recipe.module';
 import * as Joi from 'joi';
+import { FavoritesModule } from './favorites/favorites.module';
+import { RatingModule } from './rating/rating.module';
+import { CommentModule } from './comment/comment.module';
 
 @Module({
   imports: [
@@ -35,6 +39,10 @@ import * as Joi from 'joi';
     }),
     UsersModule,
     AuthModule,
+    RecipeModule,
+    FavoritesModule,
+    RatingModule,
+    CommentModule,
   ],
 })
 export class AppModule {}

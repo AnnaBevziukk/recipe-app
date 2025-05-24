@@ -32,13 +32,12 @@
 //
 // export default RecipeCard;
 
-
 // components/RecipeCard.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import s from './RecipeCard.module.scss';
-import recipeImg from '../images/recipeIMG.jpg';
-import {FaClock} from 'react-icons/fa';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import s from "./RecipeCard.module.scss";
+import recipeImg from "../images/recipeIMG.jpg";
+import { FaClock } from "react-icons/fa";
 
 function RecipeCard({ recipe, isModeration = false, onApprove, onReject }) {
   const navigate = useNavigate();
@@ -57,28 +56,35 @@ function RecipeCard({ recipe, isModeration = false, onApprove, onReject }) {
         role="button"
         tabIndex={0}
         onKeyDown={(e) => {
-          if (!isModeration && e.key === 'Enter') handleClick();
+          if (!isModeration && e.key === "Enter") handleClick();
         }}
       >
-        <img src={recipe.image || recipeImg} alt={recipe.title} className={s.card__img} />
+        <img
+          src={recipe.image || recipeImg}
+          alt={recipe.title}
+          className={s.card__img}
+        />
         <div className={s.card__content}>
           <h3 className={s.card__title}>{recipe.title}</h3>
-          <p className={s.card__ingredients}>{recipe.ingredients || 'No ingredients'}</p>
+          <p className={s.card__ingredients}>
+            {recipe.ingredients || "No ingredients"}
+          </p>
           <div className={s.card__meta}>
             <span className={s.card__time}>
-              <FaClock className={s.card__icon} /> {recipe.time || 'N/A'} m
+              <FaClock className={s.card__icon} /> {recipe.time || "N/A"} m
             </span>
-            <span className={s.card__author}>By {recipe.author || 'Unknown'}</span>
-            <span className={s.card__date}>{recipe.date || 'N/A'}</span>
+            <span className={s.card__author}>
+              By {recipe.author || "Unknown"}
+            </span>
+            <span className={s.card__date}>{recipe.date || "N/A"}</span>
           </div>
-
         </div>
       </div>
 
       {isModeration && (
         <div className={s.card__actions}>
           <div className={s.card__description}>
-          <h4>Опис</h4>
+            <h4>Опис</h4>
             <p>{recipe.description}</p>
           </div>
           <div className={s.card__buttons}>
@@ -104,7 +110,6 @@ function RecipeCard({ recipe, isModeration = false, onApprove, onReject }) {
         </div>
       )}
     </div>
-
   );
 }
 

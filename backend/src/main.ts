@@ -6,7 +6,6 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import * as cookieParser from 'cookie-parser';
 
-
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
@@ -19,7 +18,7 @@ async function bootstrap() {
   });
   const adapterInstance = app.getHttpAdapter().getInstance();
   console.log('HTTP Adapter instance:', adapterInstance.constructor.name);
-  
+
   await app.listen(process.env.PORT ?? 8000);
 }
 bootstrap();
