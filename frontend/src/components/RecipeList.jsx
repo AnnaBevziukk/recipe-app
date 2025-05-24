@@ -42,9 +42,9 @@
 // }
 //
 // export default RecipeList;
-import React, { useState, useEffect } from 'react';
-import RecipeCard from './RecipeCard';
-import s from './RecipeList.module.scss';
+import React, { useState, useEffect } from "react";
+import RecipeCard from "./RecipeCard";
+import s from "./RecipeList.module.scss";
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -58,20 +58,23 @@ function RecipeList() {
     const fetchRecipes = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:3000/recipes?page=${currentPage}&limit=${recipesPerPage}`, {
-          credentials: 'include', // Для авторизації, якщо потрібно
-        });
+        const res = await fetch(
+          `http://localhost:3000/recipes?page=${currentPage}&limit=${recipesPerPage}`,
+          {
+            credentials: "include", // Для авторизації, якщо потрібно
+          }
+        );
         const data = await res.json();
 
         if (res.ok) {
           setRecipes(data.data); // Адаптуй до структури відповіді бекенду
           setTotalPages(Math.ceil(data.total / recipesPerPage)); // Адаптуй до поля total
         } else {
-          setError('Помилка при завантаженні рецептів');
+          setError("Помилка при завантаженні рецептів");
         }
       } catch (err) {
-        console.error('Fetch error:', err);
-        setError('Не вдалося зʼєднатися із сервером');
+        console.error("Fetch error:", err);
+        setError("Не вдалося зʼєднатися із сервером");
       } finally {
         setLoading(false);
       }
@@ -92,7 +95,9 @@ function RecipeList() {
     <div className={s.recept}>
       {loading && <div className={s.recept__loading}>Завантаження...</div>}
       {error && <div className={s.recept__error}>{error}</div>}
-      {!loading && !error && recipes.length === 0 && <div className={s.recept__noData}>Рецептів не знайдено.</div>}
+      {!loading && !error && recipes.length === 0 && (
+        <div className={s.recept__noData}>Рецептів не знайдено.</div>
+      )}
       {!loading && !error && (
         <>
           <div className={s.recept__list}>
@@ -104,8 +109,13 @@ function RecipeList() {
             <button onClick={handlePrevPage} disabled={currentPage === 1}>
               Previous
             </button>
-            <span>Page {currentPage} of {totalPages}</span>
-            <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            <span>
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+            >
               Next
             </button>
           </div>

@@ -4,8 +4,13 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   JoinColumn,
+  CreateDateColumn,
+  OneToMany,
 } from 'typeorm';
-import { User } from '../users/user.entity'; // Якщо є юзер модель
+
+import { User } from '../users/user.entity';
+import { Rating } from '../rating/rating.entity';
+import { Comment } from '../comment/comment.entity';
 
 @Entity()
 export class Recipe {
@@ -29,4 +34,22 @@ export class Recipe {
 
   @Column()
   authorId!: number;
+
+  // 👇 Зв'язок з користувачем
+  @ManyToOne(() => User, (user) => user.recipes, { eager: true })
+  @JoinColumn({ name: 'authorId' })
+  author!: User;
+
+  // Нове поле для модерації
+  @Column({ default: false })
+  isModerated!: boolean;
+
+  @CreateDateColumn()
+  createdAt!: Date; // ← додаємо цю колонку
+
+  @OneToMany(() => Rating, (rating) => rating.recipe)
+  ratings!: Rating[];
+
+  @OneToMany(() => Comment, (comment) => comment.recipe)
+  comments!: Comment[];
 }
